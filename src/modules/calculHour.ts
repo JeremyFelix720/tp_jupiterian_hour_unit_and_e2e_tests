@@ -1,6 +1,8 @@
+/*
 const moon_dial = 1
 const earth_dial = 1
 const sun_dial = 1
+*/
 
 export function getValueFromDials(moon_dial: number, earth_dial: number, sun_dial: number){
   let total = 0;
@@ -31,13 +33,13 @@ export function getHourFromValue(value: number) {
   if(value <= 1){
     return "mortin"
   }
-  if(value > 1 && value <= 2){
+  else if(value > 1 && value <= 2){
     return "aprenoon"
   }
-  if(value > 2 && value <= 4){
+  else if(value > 2 && value <= 4){
     return "soirning"
   }
-  if(value > 4){
+  else {
     return "nuight"
   }
 };

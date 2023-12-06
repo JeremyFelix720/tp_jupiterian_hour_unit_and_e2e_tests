@@ -1,0 +1,57 @@
+$white : #F5F5F5;
+$black : #303030;
+
+p, label, option, h1, h2, h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: $black;
+}
+
+p, label, option {
+  font-size: 16px;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 19px;
+}
+
+#app {
+  background-color: $white;
+  margin: auto;
+  padding: 20px;
+  border-radius: 20px;
+  border: solid 2px $black;
+  max-width: 500px;
+}
+
+#dial_form {
+  display: flex;
+  flex-direction: column;
+
+  #dial_form_button, label {
+    margin-top: 20px;
+  }
+
+  #dial_form_button {
+    font-weight: bold;
+    align-self: center;
+    border-radius: 5px;
+    border: none;
+    background-color: $black;
+    color: white;
+    width: 200px;
+    height: 30px;
+  }
+}

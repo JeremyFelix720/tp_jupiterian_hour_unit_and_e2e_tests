@@ -1,12 +1,12 @@
 import { getValueFromDials, getHourFromValue } from '../modules/calculHour.ts'
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useMemo } from 'react';
 
 export default function DialForm() {
   const [moonDial, setMoonDial] = useState(1);
   const [earthDial, setEarthDial] = useState(1);
   const [sunDial, setSunDial] = useState(1);
-  const [hourResult, setHourResult] = useState("???");
+  const [showResult, setShowResult] = useState(false);
 
   const handleChangeMoonDial = useCallback( async (e: React.ChangeEvent<HTMLSelectElement>) => {
     setMoonDial(parseInt(e.target.value))
@@ -20,11 +20,15 @@ export default function DialForm() {
     setSunDial(parseInt(e.target.value))
   }, [])
 
-  const handleHourResult = useCallback((e: any) => {
+  const handleShow = useCallback((e: any) => {
     e.preventDefault()
+    setShowResult(true)
+  }, [])
+
+  const hourResult = useMemo( () => {
     const value = getValueFromDials(moonDial, earthDial, sunDial)
     const hour = getHourFromValue(value)
-    setHourResult(hour)
+    return hour
   }, [moonDial, earthDial, sunDial])
 
   return (
@@ -51,9 +55,9 @@ export default function DialForm() {
           <option value="2">2</option>
         </select>
 
-        <button id="dial_form_button" onClick={handleHourResult}>Calculer</button>
+        <button id="dial_form_button" onClick={handleShow}>Calculer</button>
 
-        <h2>L'heure en Corodinsite Jupiterienne est : {hourResult}</h2>
+        <h2>L'heure en Corodinsite Jupiterienne est : <span>{showResult ? hourResult : "???"}</span></h2>
       </form>
     </>
   )
